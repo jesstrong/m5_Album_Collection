@@ -29,19 +29,13 @@ namespace album_collection.Controllers
             return albumRepo.GetAll();
         }
 
-        //// GET: api/Album/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Album>> GetAlbum(int id)
-        //{
-        //    var album = await _context.Albums.FindAsync(id);
-
-        //    if (album == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return album;
-        //}
+        // GET: api/Album/5
+        [HttpGet("{id}")]
+        public Album GetAlbum(int id)
+        {
+            var album = albumRepo.GetById(id);
+            return album;
+        }
 
         //// PUT: api/Album/5
         //// To protect from overposting attacks, enable the specific properties you want to bind to, for
