@@ -7,6 +7,9 @@ export default() => {
     headerSetup();
     footerSetup();
     navHome();
+    navArtist();
+    navAlbum();
+    navSong();
 }
 
 const appDiv = document.getElementById("app");
@@ -26,4 +29,11 @@ function navHome() {
     homeLink.addEventListener('click', function(){
         appDiv.innerHTML = Home();
     });
+}
+
+function navArtist() {
+    const artistLink = document.querySelector(".nav_artist");
+    artistLink.addEventListener('click', function(){
+        appDiv.innerHTML = "artistsfsdf";
+    })
 }
