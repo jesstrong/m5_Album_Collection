@@ -6,5 +6,5 @@ export default function Artist(artist) {
             <li>Artist Two</li>
             <li>Artist Three</li>        
         </ul>
-    `
+    `;
 }

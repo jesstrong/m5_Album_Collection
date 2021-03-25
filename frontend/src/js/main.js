@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
+import Artist from "./components/Artist";
 
 export default() => {
     //document.getElementById("app").innerText = "Hello World!";
@@ -34,6 +35,6 @@ function navHome() {
 function navArtist() {
     const artistLink = document.querySelector(".nav_artist");
     artistLink.addEventListener('click', function(){
-        appDiv.innerHTML = "artistsfsdf";
+        appDiv.innerHTML = Artist();
     })
 }
