@@ -1,16 +1,17 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import Artist from "./components/Artist";
+import Albums from "./components/Album";
+// import Artists from "./components/Artist";
 
 export default() => {
     //document.getElementById("app").innerText = "Hello World!";
     headerSetup();
     footerSetup();
     navHome();
-    navArtist();
+    //navArtist();
     navAlbum();
-    navSong();
+    //navSong();
 }
 
 const appDiv = document.getElementById("app");
@@ -32,9 +33,27 @@ function navHome() {
     });
 }
 
-function navArtist() {
-    const artistLink = document.querySelector(".nav_artist");
-    artistLink.addEventListener('click', function(){
-        appDiv.innerHTML = Artist();
-    })
+function navAlbum() {
+    const albumLink = document.querySelector(".nav_album");
+    albumLink.addEventListener('click', function(){
+
+        fetch("https://localhost:44313/api/album")
+            .then(respone => respone.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+
+        appDiv.innerHTML = Albums(albums);   
+ });
 }
+
+// function navArtist() {
+//     const artistLink = document.querySelector(".nav_artist");
+//     artistLink.addEventListener('click', function(){
+        
+//         fetch("https://")
+//             .then(respone => respone.json())
+//             .then(data => console.log(data))
+//             .catch(err => console.log(err));
+
+//         appDiv.innerHTML = Artists(artists);
+//     })
