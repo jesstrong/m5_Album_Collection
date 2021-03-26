@@ -69,17 +69,16 @@ namespace album_collection.Controllers
         //    return NoContent();
         //}
 
-        //// POST: api/Album
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<Album>> PostAlbum(Album album)
-        //{
-        //    _context.Albums.Add(album);
-        //    await _context.SaveChangesAsync();
+        // POST: api/Album
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public Album PostAlbum([FromBody]Album album)
+        {
+            albumRepo.Create(album);
 
-        //    return CreatedAtAction("GetAlbum", new { id = album.Id }, album);
-        //}
+            return album;
+        }
 
         //// DELETE: api/Album/5
         //[HttpDelete("{id}")]
