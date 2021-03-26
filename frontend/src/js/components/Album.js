@@ -5,8 +5,8 @@
                      ${albums.map(album =>{
                          return `
                              <li>
-                                 Artist Title: ${artist.title}
-                                 Record Label: ${artist.recordLabel}
+                                 Album Title: ${album.title}
+                                 Record Label: ${album.recordLabel}
                              </li>
                          `
                      })}
