@@ -72,14 +72,12 @@ namespace album_collection.Controllers
         //// POST: api/Artist
         //// To protect from overposting attacks, enable the specific properties you want to bind to, for
         //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<Artist>> PostArtist(Artist artist)
-        //{
-        //    _context.Artists.Add(artist);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
-        //}
+        [HttpPost]
+        public Artist PostArtist([FromBody]Artist artist)
+        {
+            artistRepo.Create(artist);
+            return  artist;
+        }
 
         //// DELETE: api/Artist/5
         //[HttpDelete("{id}")]
