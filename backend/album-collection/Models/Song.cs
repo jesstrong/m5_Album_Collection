@@ -12,7 +12,6 @@ namespace album_collection.Models
         public int Duration { get; set; }
         public int AlbumId { get; set; }
 
-        [System.Text.Json.Serialization.JsonIgnore]
-        public virtual Album Albums { get; set; }
+       public virtual Album Albums { get; set; }
     }
 }

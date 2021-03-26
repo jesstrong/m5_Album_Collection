@@ -13,7 +13,7 @@ namespace album_collection.Models
         public int Age { get; set; } // Additional Info
         public string recordLabel { get; set; } // Additional Info
         public string Hometown { get; set; } // Additional Info
-        [System.Text.Json.Serialization.JsonIgnore]
+       
         public virtual ICollection<Album> Albums { get; set; }
     }
 }
