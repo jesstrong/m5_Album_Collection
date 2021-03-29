@@ -37,37 +37,21 @@ namespace album_collection.Controllers
             return artist;
         }
 
-        //// PUT: api/Artist/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutArtist(int id, Artist artist)
-        //{
-        //    if (id != artist.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Artist/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public Artist PutArtist(int id, Artist artist)
+        {
+            if (id != artist.Id)
+            {
+                return null;
+            }
 
-        //    _context.Entry(artist).State = EntityState.Modified;
+            artistRepo.Update(artist);
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ArtistExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            return artist;
+        }
 
         //// POST: api/Artist
         //// To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -79,21 +63,16 @@ namespace album_collection.Controllers
             return  artist;
         }
 
-        //// DELETE: api/Artist/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Artist>> DeleteArtist(int id)
-        //{
-        //    var artist = await _context.Artists.FindAsync(id);
-        //    if (artist == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // DELETE: api/Artist/5
+        [HttpDelete("{id}")]
+        public string DeleteArtist(int id)
+        {
+            var artist = artistRepo.GetById(id);
 
-        //    _context.Artists.Remove(artist);
-        //    await _context.SaveChangesAsync();
+            artistRepo.Delete(artist);
 
-        //    return artist;
-        //}
+            return "Artist successfully deleted";
+        }
 
         //private bool ArtistExists(int id)
         //{

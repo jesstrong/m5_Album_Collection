@@ -37,37 +37,19 @@ namespace album_collection.Controllers
             return song;
         }
 
-        //// PUT: api/Song/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutSong(int id, Song song)
-        //{
-        //    if (id != song.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Song/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public Song PutSong(int id, Song song)
+        {
+            if (id != song.Id)
+            {
+                return null;
+            }
 
-        //    _context.Entry(song).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!SongExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            return song;
+        }
 
         // POST: api/Song
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -79,21 +61,16 @@ namespace album_collection.Controllers
             return song;
         }
 
-        //// DELETE: api/Song/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Song>> DeleteSong(int id)
-        //{
-        //    var song = await _context.Songs.FindAsync(id);
-        //    if (song == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // DELETE: api/Song/5
+        [HttpDelete("{id}")]
+        public string DeleteSong(int id)
+        {
+            var song = songRepo.GetById(id);
 
-        //    _context.Songs.Remove(song);
-        //    await _context.SaveChangesAsync();
+            songRepo.Delete(song);
 
-        //    return song;
-        //}
+            return "Song successfully deleted";
+        }
 
         //private bool SongExists(int id)
         //{
