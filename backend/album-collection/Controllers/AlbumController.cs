@@ -37,37 +37,21 @@ namespace album_collection.Controllers
             return album;
         }
 
-        //// PUT: api/Album/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutAlbum(int id, Album album)
-        //{
-        //    if (id != album.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Album/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public Album PutAlbum(int id, Album album)
+        {
+            if (id != album.Id)
+            {
+                return null;
+            }
 
-        //    _context.Entry(album).State = EntityState.Modified;
+            albumRepo.Update(album);
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!AlbumExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            return album;
+        }
 
         // POST: api/Album
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -80,21 +64,16 @@ namespace album_collection.Controllers
             return album;
         }
 
-        //// DELETE: api/Album/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Album>> DeleteAlbum(int id)
-        //{
-        //    var album = await _context.Albums.FindAsync(id);
-        //    if (album == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // DELETE: api/Album/5
+        [HttpDelete("{id}")]
+        public string DeleteAlbum(int id)
+        {
+            var album = albumRepo.GetById(id);
 
-        //    _context.Albums.Remove(album);
-        //    await _context.SaveChangesAsync();
+            albumRepo.Delete(album);
 
-        //    return album;
-        //}
+            return "Album successfully deleted";
+        }
 
         //private bool AlbumExists(int id)
         //{
