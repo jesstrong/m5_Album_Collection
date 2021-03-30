@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Albums from "./components/Albums";
 import Artists from "./components/Artists";
 import Songs from "./components/Songs";
+import Artist from "./components/Artist";
 
 export default() => {
     //document.getElementById("app").innerText = "Hello World!";
@@ -53,11 +54,11 @@ function navArtist() {
         fetch("https://localhost:44313/api/artist")
             .then(respone => respone.json())
             .then(data => {
-                appDiv.innerHTML = Artists(data)
+                appDiv.innerHTML = Artists(data);
+                contentArtistButton();
             }) 
-            .catch(err => console.log(err));
-        
- });
+            .catch(err => console.log(err));      
+    });
 }
 function navSong() {
     const songLink = document.querySelector(".nav_song");
@@ -75,10 +76,45 @@ function contentArtistButton(){
     const contentArtistElements = document.querySelectorAll(".content_artist");
     contentArtistElements.forEach(element => {
         element.addEventListener('click', function(){
-            const artistId = element.id;
-            fetch(`https://localhost:44313/api/artist/${artistId}`)
-            .then(response => respone.json())
-            .then(artist => console.log(artist))
+            fetch('https://localhost:44313/api/artist/')
+            .then(response => response.json())
+            .then(artist => {
+                appDiv.innerHTML = Artists(artist);
+               artistAddButton();
+            })
+            .catch(err => console.log(err));
+        });
+    });
+}
+
+function artistAddButton() {
+    const addArtistButton = document.querySelector(".artistAddButton");
+    addArtistButton.addEventListener('click', function(){
+        const newArtistName = this.parentElement.querySelector(".artistName").value;
+
+        // let recordLabel = "";
+        // let homeTown = "";
+
+        const requestBody = {
+            Name: newArtistName,
+            // Age: 23,
+            // RecordLabel: RecordLabel,
+            // Hometown: Hometown
+        }
+
+        fetch('https://localhost:44313/api/artist', {
+            method: "POST", 
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(requestBody)
         })
-    })
+        .then(response => response.json())
+        .then(artist => {
+            console.log(artist);
+        })
+        .catch(err => console.log(err));
+
+    });
+
 }

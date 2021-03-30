@@ -15,6 +15,11 @@ export default function Artists(artists) {
                     `
                 }).join('')}
             </ul>
+
+        <section class="artist_addArtist">
+            <input type='text' class="artistName" PlaceHolder="Add a New Artist" />
+            <button class="artistAddButton">Add Artist</button>
+        </section>
     
     `; 
 }
