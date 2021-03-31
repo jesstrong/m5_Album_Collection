@@ -21,5 +21,5 @@ export default function Artists(artists) {
             <button class="artistAddButton">Add Artist</button>
         </section>
     
-    `; 
+    `;
 }

@@ -73,7 +73,7 @@ function navSong() {
 }
 
 function contentArtistButton(){
-    const contentArtistElements = document.querySelectorAll(".content_artist");
+    const contentArtistElements = document.querySelectorAll(".artist_addArtist");
     contentArtistElements.forEach(element => {
         element.addEventListener('click', function(){
             fetch('https://localhost:44313/api/artist/')
@@ -112,6 +112,8 @@ function artistAddButton() {
         .then(response => response.json())
         .then(artist => {
             console.log(artist);
+            appDiv.innerHTML = Artists(artist);
+            artistAddButton();
         })
         .catch(err => console.log(err));
 
