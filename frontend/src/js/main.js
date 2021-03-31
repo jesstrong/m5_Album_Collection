@@ -5,6 +5,7 @@ import Albums from "./components/Albums";
 import Artists from "./components/Artists";
 import Songs from "./components/Songs";
 import Artist from "./components/Artist";
+import apiAction from "./api/api-actions";
 
 export default() => {
     //document.getElementById("app").innerText = "Hello World!";
@@ -112,11 +113,43 @@ function artistAddButton() {
         .then(response => response.json())
         .then(artist => {
             console.log(artist);
-            appDiv.innerHTML = Artists(artist);
-            artistAddButton();
+            appDiv.innerHTML = Artist(artist);
+            // artistAddButton();
         })
         .catch(err => console.log(err));
 
     });
+}
 
+function contentAlbumButton(){
+    const contentAlbumElements = document.querySelectorAll(".artist_addAlbum");
+    contentAlbumElements.forEach(element => {
+        element.addEventListener('click', function(){
+            const albumId = element.id;
+            fetch(`https://localhost:44313/api/artist/${albumId}`)
+            .then(response => response.json())
+            .then(album => {
+                appDiv.innerHTML = Artist(album);
+               addAlbumArtist();
+            })
+            .catch(err => console.log(err));
+        });
+    });
+}
+
+function addAlbumArtist(){
+    const addAlbumButton = document.querySelector(".albumAddButton");
+    addAlbumButton.addEventListener('click', function(){
+        const artistId = addAlbumButton.id;
+        const newAlbumName = this.parentElement.querySelector(".albumName").value;
+
+        const requestBody = {
+            Name: newAlbumName,
+            ArtistId: artistId
+        }
+        apiAction.postRequest(`https://localhost:44313/api/album/${artistId}`), requestBody, user =>{
+            appDiv.innerHTML = Artist(artist);
+            addAlbumArtist();
+        }
+    });
 }
