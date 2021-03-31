@@ -56,6 +56,7 @@ function navArtist() {
             .then(respone => respone.json())
             .then(data => {
                 appDiv.innerHTML = Artists(data);
+                artistAddButton();
                 contentArtistButton();
             }) 
             .catch(err => console.log(err));      
@@ -74,14 +75,17 @@ function navSong() {
 }
 
 function contentArtistButton(){
-    const contentArtistElements = document.querySelectorAll(".artist_addArtist");
+    const contentArtistElements = document.querySelectorAll(".artist");
     contentArtistElements.forEach(element => {
         element.addEventListener('click', function(){
-            fetch('https://localhost:44313/api/artist/')
+            const artistId = element.id;
+            fetch(`https://localhost:44313/api/artist/${artistId}`)
             .then(response => response.json())
             .then(artist => {
-                appDiv.innerHTML = Artists(artist);
-               artistAddButton();
+                appDiv.innerHTML = Artist(artist);
+               contentAlbumButton();
+               addAlbumArtist();
+              
             })
             .catch(err => console.log(err));
         });
@@ -114,7 +118,8 @@ function artistAddButton() {
         .then(artist => {
             console.log(artist);
             appDiv.innerHTML = Artist(artist);
-            // artistAddButton();
+            addAlbumArtist();
+
         })
         .catch(err => console.log(err));
 
@@ -138,18 +143,21 @@ function contentAlbumButton(){
 }
 
 function addAlbumArtist(){
+    console.log("add album");
     const addAlbumButton = document.querySelector(".albumAddButton");
     addAlbumButton.addEventListener('click', function(){
         const artistId = addAlbumButton.id;
-        const newAlbumName = this.parentElement.querySelector(".albumName").value;
-
+        const newAlbumName = document.getElementById("albumName").value;
+        console.log("button clicked");
+        console.log("newAlbumName");
         const requestBody = {
-            Name: newAlbumName,
+            Title: newAlbumName,
             ArtistId: artistId
         }
-        apiAction.postRequest(`https://localhost:44313/api/album/${artistId}`), requestBody, user =>{
+        apiAction.postRequest(`https://localhost:44313/api/album`, requestBody, artist =>{
+            console.log(artist);
             appDiv.innerHTML = Artist(artist);
             addAlbumArtist();
-        }
-    });
-}
+        } );
+    });   
+}   

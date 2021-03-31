@@ -6,7 +6,7 @@ export default function Artists(artists) {
                     return `
                         <li>
                             <div class="content_artist">
-                                <h4 id="${artist.id}"> ${artist.name}</h4>
+                                <h4 class="artist" id="${artist.id}"> ${artist.name}</h4>
                                 Artist Age: ${artist.age}</br>
                                 Record Label: ${artist.recordLabel}</br>
                                 Artist Hometown: ${artist.hometown}</br>

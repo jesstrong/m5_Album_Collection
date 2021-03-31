@@ -9,15 +9,15 @@ export default function Artist(artist) {
             ${artist.albums.map(album =>{
                 return `
                     <li>
-                        ${album.name}
+                        ${album.title}
                     </li>
                 `
             }).join('')}
             </ol>
     
-            <section class="artist_addAlbum">
+            <section class="albumForm">
                 <label>Album Name:</label>
-                <input type='text' class="albumName" PlaceHolder="Add a New Album" />
+                <input type='text' id="albumName" class="albumName" PlaceHolder="Add a New Album" />
                 </br>
                 <button class="albumAddButton" id="${artist.id}">Add Album</button>
             </section>
