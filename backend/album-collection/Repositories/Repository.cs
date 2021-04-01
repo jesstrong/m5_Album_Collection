@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using album_collection.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,5 +42,11 @@ namespace album_collection.Repositories
             db.Set<T>().Update(entity);
             Save();
         }
+        //public Album GetAlbumByArtistId(int id)
+        //{
+        //    var artist = db.Set<Artist>().Include(l => l.Album).Where(a => a.Id == id).FirstOrDefault();
+
+        //    return artist.Album;
+        //}
     }
 }
