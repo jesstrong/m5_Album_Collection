@@ -1,24 +1,15 @@
- export default function Albums(albums) {
+export default function Albums(albums) {
     return `
              <h1>Album List</h1>
                 <ul>
                      ${albums.map(album =>{
                          return `
-                             <li>
-                                 Album Title: ${album.title}
+                            <div class="albums" id="${album.id}">
+                                <h3> Album Title: ${album.title} </h3>
                                  Record Label: ${album.recordLabel}
-                             </li>
+                            </div>
                          `
-                     })}
-                 </ul>
+                     }).join('')}
+                </ul>
     `;
-
-    // `
-    //      <h1>Album List</h1>
-    //      <ul>
-    //          <li>Album One</li>
-    //          <li>Album Two</li>
-    //         <li>Album Three</li>        
-    //     </ul>
-    // `;
- }
+}

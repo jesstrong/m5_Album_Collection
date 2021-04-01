@@ -20,6 +20,7 @@ export default function Artist(artist) {
                 <input type='text' id="albumName" class="albumName" PlaceHolder="Add a New Album" />
                 </br>
                 <button class="albumAddButton" id="${artist.id}">Add Album</button>
+                
             </section>
     
         `

@@ -5,11 +5,11 @@ export default function Songs(songs) {
                 ${songs.map(song =>{
                     return `
                         <li>
-                            Song Title: ${song.title}
+                            <h4>Song Title: ${song.title}</h4><br>
                             Song Duration: ${song.duration}                            
                         </li>
                     `
-                })}
+                }).join('')}
             </ul>
     
         `; 

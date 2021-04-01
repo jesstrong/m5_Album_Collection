@@ -1,5 +1,3 @@
-const apiKey= "";
-
 function postRequest(location, requestBody, callback){
     fetch(location,{
         method: "POST",
@@ -28,6 +26,7 @@ function deleteRequest(location, id, callback){
     })
     .then(response => response.text())
     .then(data => {
+        console.log(data);
         callback(data);
     })
     .catch(err => console.log(err));
