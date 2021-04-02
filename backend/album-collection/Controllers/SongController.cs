@@ -55,10 +55,10 @@ namespace album_collection.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public Song PostSong([FromBody]Song song)
+        public IEnumerable <Song> PostSong([FromBody]Song song)
         {
             songRepo.Create(song);
-            return song;
+            return songRepo.GetAll();
         }
 
         // DELETE: api/Song/5

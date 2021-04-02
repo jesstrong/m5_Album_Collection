@@ -60,6 +60,7 @@ namespace album_collection.Controllers
         public Album PostAlbum([FromBody]Album album)
         {
             albumRepo.Create(album);
+            albumRepo.LoadProxy(album, "Artist");
 
             return album;
         }
