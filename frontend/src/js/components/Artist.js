@@ -14,10 +14,13 @@ export default function Artist(artist) {
                 `
             }).join('')}
             </ol>
+            
     
             <section class="albumForm">
                 <label>Album Name:</label>
                 <input type='text' id="albumName" class="albumName" PlaceHolder="Add a New Album" />
+                <label>Record Label:</label>
+                <input type='text' id="albumLabel" PlaceHolder="Add Record Label" />
                 </br>
                 <button class="albumAddButton" id="${artist.id}">Add Album</button>
                 

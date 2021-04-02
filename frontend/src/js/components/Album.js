@@ -17,7 +17,9 @@ export default function Album(album) {
 
                 <section class="songForm">
                     <label>Song Name:</label>
-                    <input type='text' id="songName" class="songName" PlaceHolder="Add a New Song" />
+                    <input type='text' id="songName" class="songName" PlaceHolder="Enter Song Name" />
+                    <label>Duration</label>
+                    <input type='text' id="songDuration" PlaceHolder="Enter Song Duration" />
                     </br>
                     <button class="songAddButton" id="${album.id}">Add Song</button>
                 </section>

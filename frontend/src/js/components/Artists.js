@@ -19,7 +19,14 @@ export default function Artists(artists) {
             </ul>
 
         <section class="artist_addArtist">
-            <input type='text' class="artistName" PlaceHolder="Add a New Artist" />
+            <label> Artist Name: </label>  
+            <input type='text' class="artistName" PlaceHolder="Enter Artist Name" />
+            <label> Age: </label>  
+            <input type='text' class="artistAge" PlaceHolder="Enter Age" />
+            <label> Record Label: </label>  
+            <input type='text' class="artistRecordLabel" PlaceHolder="Enter Record Label" />
+            <label> Hometown: </label>  
+            <input type='text' class="artistHometown" PlaceHolder="Enter Hometown" />
             <button class="artistAddButton">Add Artist</button>
         </section>
     

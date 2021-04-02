@@ -102,9 +102,16 @@ function artistAddButton() {
     const addArtistButton = document.querySelector(".artistAddButton");
     addArtistButton.addEventListener('click', function(){
         const newArtistName = this.parentElement.querySelector(".artistName").value;
+        const newArtistAge = this.parentElement.querySelector(".artistAge").value;
+        const newArtistLabel = this.parentElement.querySelector(".artistRecordLabel").value;
+        const newArtistHometown = this.parentElement.querySelector(".artistHometown").value;
 
         const requestBody = {
             Name: newArtistName,
+            Age: newArtistAge,
+            RecordLabel: newArtistLabel,
+            Hometown: newArtistHometown
+            
         }
 
         fetch('https://localhost:44313/api/artist', {
@@ -149,11 +156,12 @@ function addAlbumArtist(){
     addAlbumButton.addEventListener('click', function(){
         const artistId = addAlbumButton.id;
         const newAlbumName = document.getElementById("albumName").value;
-        console.log("button clicked");
-        console.log("newAlbumName");
+        const newAlbumLabel = document.getElementById("albumLabel").value;
+
         const requestBody = {
             Title: newAlbumName,
-            ArtistId: artistId
+            ArtistId: artistId,
+            RecordLabel: newAlbumLabel
         }
         apiAction.postRequest(`https://localhost:44313/api/album`, requestBody, album =>{
             appDiv.innerHTML = Album(album);
@@ -183,11 +191,14 @@ function addSongAlbum(){
     addSongButton.addEventListener('click', function(){
         const songId = addSongButton.id;
         const newSongName = document.getElementById("songName").value;
+        const newSongDuration = document.getElementById("songDuration").value;
+
         console.log("button clicked");
         console.log("newSongName");
             const requestBody = {
                 Title: newSongName,
-                AlbumId: songId
+                AlbumId: songId,
+                Duration: newSongDuration
             }
             apiAction.postRequest(`https://localhost:44313/api/song`, requestBody, song =>{
                 console.log(song);
