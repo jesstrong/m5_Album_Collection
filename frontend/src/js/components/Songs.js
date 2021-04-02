@@ -5,8 +5,9 @@ export default function Songs(songs) {
                 ${songs.map(song =>{
                     return `
                         <li>
-                            <h4>Song Title: ${song.title}</h4><br>
-                            Song Duration: ${song.duration}                            
+                            <h4>Song Title: ${song.title}</h4></br>
+                            Song Duration: ${song.duration}</br>
+                            <button class="songDelBtn" id="${song.id}">Delete</button>
                         </li>
                     `
                 }).join('')}

@@ -11,7 +11,7 @@ export default function Artists(artists) {
                                 Record Label: ${artist.recordLabel}</br>
                                 Artist Hometown: ${artist.hometown}</br>
                                 <br>
-                                <button class="artistDelBtn id="${artist.id}">Delete</button>
+                                <button class="artistDelBtn" id="${artist.id}">Delete</button>
                             </div>
                         </li>
                     `

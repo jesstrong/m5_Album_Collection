@@ -6,7 +6,9 @@ export default function Albums(albums) {
                          return `
                             <div class="albums" id="${album.id}">
                                 <h3> Album Title: ${album.title} </h3>
-                                 Record Label: ${album.recordLabel}
+                                 Record Label: ${album.recordLabel} 
+                                 </br>
+                                 <button class="albumDelBtn" id="${album.id}">Delete</button>
                             </div>
                          `
                      }).join('')}

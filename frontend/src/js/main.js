@@ -46,6 +46,7 @@ function navAlbum() {
             .then(data => {
                 appDiv.innerHTML = Albums(data);
                 albumContentElement();
+                deleteAlbum();
             })
             .catch(err => console.log(err)); 
     });
@@ -72,7 +73,10 @@ function navSong() {
 
         fetch("https://localhost:44313/api/song")
             .then(respone => respone.json())
-            .then(data => appDiv.innerHTML = Songs(data))
+            .then(data => {
+                appDiv.innerHTML = Songs(data);
+                deleteSong();
+            })             
             .catch(err => console.log(err));
  });
 }
@@ -151,10 +155,9 @@ function addAlbumArtist(){
             Title: newAlbumName,
             ArtistId: artistId
         }
-        apiAction.postRequest(`https://localhost:44313/api/album`, requestBody, artist =>{
-            console.log(artist);
-            appDiv.innerHTML = Artist(artist);
-            addAlbumArtist();
+        apiAction.postRequest(`https://localhost:44313/api/album`, requestBody, album =>{
+            appDiv.innerHTML = Album(album);
+            addSongAlbum();
         });
     });   
 }   
@@ -188,8 +191,8 @@ function addSongAlbum(){
             }
             apiAction.postRequest(`https://localhost:44313/api/song`, requestBody, song =>{
                 console.log(song);
-                appDiv.innerHTML = Album(song);
-                addSongAlbum();
+                appDiv.innerHTML = Songs(song);
+               
             })
         });
 }
@@ -199,9 +202,39 @@ function deleteArtist(){
     artistDelete.forEach(element =>{
         element.addEventListener('click', function(){
             const artistId = element.id;
-            apiAction.deleteRequest(`https://localhost:44313/api/artist`, artistId, data =>{
+            apiAction.deleteRequest(`https://localhost:44313/api/artist/`, artistId, data =>{
                 if(data.indexOf(`successfully`) > -1){
                     const liItem = document.getElementById(artistId).parentElement;
+                    liItem.remove();
+                }
+            });
+        });
+    })
+}
+
+function deleteAlbum(){
+    const albumDelete = document.querySelectorAll(".albumDelBtn");
+    albumDelete.forEach(element =>{
+        element.addEventListener('click', function(){
+            const albumId = element.id;
+            apiAction.deleteRequest(`https://localhost:44313/api/album/`, albumId, data =>{
+                if(data.indexOf(`successfully`) > -1){
+                    const liItem = document.getElementById(albumId).parentElement;
+                    liItem.remove();
+                }
+            });
+        });
+    })
+}
+
+function deleteSong(){
+    const songDelete = document.querySelectorAll(".songDelBtn");
+    songDelete.forEach(element =>{
+        element.addEventListener('click', function(){
+            const songId = element.id;
+            apiAction.deleteRequest(`https://localhost:44313/api/song/`, songId, data =>{
+                if(data.indexOf(`successfully`) > -1){
+                    const liItem = document.getElementById(songId).parentElement;
                     liItem.remove();
                 }
             });
