@@ -60,7 +60,8 @@ namespace album_collection.Controllers
         public Artist PostArtist([FromBody]Artist artist)
         {
             artistRepo.Create(artist);
-            return  artist;
+            
+            return artist;
         }
 
         // DELETE: api/Artist/5

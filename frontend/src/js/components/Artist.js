@@ -1,26 +1,29 @@
-export default function Artists(artists) {
-    return `
-        <h1>Artist List</h1>
-            <ul>
-                ${artists.map(artist =>{
-                    return `
-                        <li>
-                            Artist Name: ${artist.name}
-                            Artist Age: ${artist.age}
-                            Record Label: ${artist.recordLabel}
-                            Artist Hometown: ${artist.hometown}
-                        </li>
-                    `
-                })}
-            </ul>
+export default function Artist(artist) {
+    if(artist.albums == null){
+        artist.albums = [];
+    }
+
+        return `
+            <h1>${artist.name}</h1>
+            <ol>
+            ${artist.albums.map(album =>{
+                return `
+                    <li>
+                        ${album.title}
+                    </li>
+                `
+            }).join('')}
+            </ol>
     
-        `; 
-    // `
-    //     <h1>Artist List</h1>
-    //     <ul>
-    //         <li>Artist one</li>
-    //         <li>Artist Two</li>
-    //         <li>Artist Three</li>        
-    //     </ul>
-    // `;
+            <section class="albumForm">
+                <label>Album Name:</label>
+                <input type='text' id="albumName" class="albumName" PlaceHolder="Add a New Album" />
+                </br>
+                <button class="albumAddButton" id="${artist.id}">Add Album</button>
+                
+            </section>
+    
+        `
+    // }
+
 }

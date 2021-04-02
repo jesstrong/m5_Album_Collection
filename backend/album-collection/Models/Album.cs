@@ -18,6 +18,6 @@ namespace album_collection.Models
         public virtual ICollection<Song> Songs { get; set; }
         public int ArtistId { get; set; }
         
-        public virtual Artist Artists { get; set; }
+        public virtual Artist Artist { get; set; }
     }
 }
