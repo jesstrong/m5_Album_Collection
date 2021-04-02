@@ -49,6 +49,8 @@ namespace album_collection.Controllers
             }
 
             artistRepo.Update(artist);
+           
+
 
             return artist;
         }

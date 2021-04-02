@@ -92,6 +92,7 @@ function contentArtistButton(){
                 appDiv.innerHTML = Artist(artist);
                contentAlbumButton();
                addAlbumArtist();
+               editArtistButton();
             })
             .catch(err => console.log(err));
         });
@@ -123,7 +124,6 @@ function artistAddButton() {
         })
         .then(response => response.json())
         .then(artist => {
-            console.log(artist);
             appDiv.innerHTML = Artist(artist);
             addAlbumArtist();
 
@@ -151,7 +151,6 @@ function contentAlbumButton(){
 }
 
 function addAlbumArtist(){
-    console.log("add album");
     const addAlbumButton = document.querySelector(".albumAddButton");
     addAlbumButton.addEventListener('click', function(){
         const artistId = addAlbumButton.id;
@@ -193,8 +192,6 @@ function addSongAlbum(){
         const newSongName = document.getElementById("songName").value;
         const newSongDuration = document.getElementById("songDuration").value;
 
-        console.log("button clicked");
-        console.log("newSongName");
             const requestBody = {
                 Title: newSongName,
                 AlbumId: songId,
@@ -206,6 +203,29 @@ function addSongAlbum(){
                
             })
         });
+}
+
+function editArtistButton(){
+    const editArtistBtn = document.getElementById("btnEditArtist");
+    editArtistBtn.addEventListener('click', function(){
+        const artistId = document.getElementById('artistId').value;
+        const artistName = document.getElementById('artistName').value;
+        const artistAge = document.getElementById('artistAge').value;
+        const artistHometown = document.getElementById('artistHometown').value;
+        const artistRecordLabel = document.getElementById('artistRecordLabel').value;
+
+        const requestBody = {
+            Id: artistId,
+            Name: artistName,
+            Age: artistAge,
+            Hometown: artistHometown,
+            RecordLabel: artistRecordLabel
+        }
+
+        apiAction.putRequest("https://localhost:44313/api/artist/", artistId, requestBody, artist =>{
+            appDiv.innerHTML = Artist(artist);
+        })
+    });
 }
 
 function deleteArtist(){
@@ -252,3 +272,7 @@ function deleteSong(){
         });
     })
 }
+
+// function editArtistContent(){
+//     const editArtistElements =
+// }
