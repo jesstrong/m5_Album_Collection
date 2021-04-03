@@ -15,6 +15,18 @@ export default function Album(album) {
                      }).join('')}
                  </ul>
 
+                 <h3>Edit Album</h3>
+                 <h2>
+                 <input type='text' id='albumTitle' value='${album.title}' />
+                 <section class='editAlbumForm'>
+                 <input type='hidden' id='albumId' value='${album.id}' />
+                 <input type='hidden' id='albumRecordLabel' value='${album.recordLabel}' />
+                 <input type='hidden' id='albumArtistId' value='${album.artistId}' />
+     
+                 <button id='btnEditAlbum'>Save</button>
+                 </section>
+                 </h2>
+     
                 <section class="songForm">
                     <label>Song Name:</label>
                     <input type='text' id="songName" class="songName" PlaceHolder="Enter Song Name" />
