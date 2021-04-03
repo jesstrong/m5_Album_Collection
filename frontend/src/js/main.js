@@ -179,6 +179,7 @@ function albumContentElement(){
             .then(album => {
                 appDiv.innerHTML = Album(album);
                 addSongAlbum();
+                editAlbumButton();
             })
             .catch(err => console.log(err));
         });
@@ -227,6 +228,27 @@ function editArtistButton(){
         })
     });
 }
+function editAlbumButton(){
+    const editAlbumBtn = document.getElementById("btnEditAlbum");
+    editAlbumBtn.addEventListener('click', function(){
+        const albumId = document.getElementById('albumId').value;
+        const artistId = document.getElementById('albumArtistId').value;
+        const albumRecordLabel = document.getElementById('albumRecordLabel').value;
+        const albumTitle = document.getElementById('albumTitle').value;
+
+        const requestBody = {
+            Id: albumId,
+            Title: albumTitle,
+            ArtistId: artistId,
+            RecordLabel: albumRecordLabel
+        }
+
+        apiAction.putRequest("https://localhost:44313/api/album/", albumId, requestBody, album =>{
+            appDiv.innerHTML = Album(album);
+        })
+    });
+}
+
 
 function deleteArtist(){
     const artistDelete = document.querySelectorAll(".artistDelBtn");
