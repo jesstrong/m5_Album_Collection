@@ -1,0 +1,25 @@
+{
+  "name": "m5-album-collection-team-groupies",
+  "version": "1.0.0",
+  "description": "[Album Collection Requirements](https://wecancodeit-materials.netlify.app/exercises/mastery/album-collection-api-csharp-trim/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2021-Spring-Cohort/m5-album-collection-team-groupies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2021-Spring-Cohort/m5-album-collection-team-groupies/issues"
+  },
+  "homepage": "https://github.com/2021-Spring-Cohort/m5-album-collection-team-groupies#readme",
+  "devDependencies": {
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
